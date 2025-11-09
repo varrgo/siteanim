@@ -1,63 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8" />
+  <title>Rive Car</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+    #rive-canvas {
+      display: block;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: transparent;
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Rive Car&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>html, body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>#rive-canvas {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- WORKINGBASE --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;canvas</p>
-<p class="p1"><span class="Apple-converted-space">    </span>id="rive-canvas"</p>
-<p class="p1"><span class="Apple-converted-space">    </span>width="190"</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height="240"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/canvas&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://unpkg.com/@rive-app/canvas@2.24.0"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>(function () {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const canvas = document.getElementById("rive-canvas");</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (!canvas || !window.rive) return;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>const r = new rive.Rive({</p>
-<p class="p1"><span class="Apple-converted-space">        </span>src: "https://varrgo.github.io/siteanim/cursor_-_brown_v3c.riv",</p>
-<p class="p1"><span class="Apple-converted-space">        </span>canvas: canvas,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>autoplay: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>stateMachines: "State Machine 1",</p>
-<p class="p1"><span class="Apple-converted-space">        </span>onLoad: () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>r.resizeDrawingSurfaceToCanvas();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>})();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+  <!-- WORKINGBASE -->
+  <canvas
+    id="rive-canvas"
+    width="190"
+    height="240">
+  </canvas>
+
+  <script src="https://unpkg.com/@rive-app/canvas@2.24.0"></script>
+  <script>
+    (function () {
+      const canvas = document.getElementById("rive-canvas");
+      if (!canvas || !window.rive) return;
+
+      const r = new rive.Rive({
+        src: "https://varrgo.github.io/siteanim/cursor_-_brown_v3c.riv",
+        canvas: canvas,
+        autoplay: true,
+        stateMachines: "State Machine 1",
+        onLoad: () => {
+          r.resizeDrawingSurfaceToCanvas();
+        },
+      });
+    })();
+  </script>
 </body>
 </html>
