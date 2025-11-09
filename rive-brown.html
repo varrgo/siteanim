@@ -4,13 +4,26 @@
   <meta charset="UTF-8" />
   <title>Rive Car</title>
   <style>
-    html, body {
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+    #rive-wrapper {
+      width: 100%;
+      height: 100%;
       margin: 0;
       padding: 0;
       background: transparent;
+      overflow: hidden;
     }
     #rive-canvas {
       display: block;
+      width: 100%;
+      height: 100%;
       margin: 0;
       padding: 0;
       border: none;
@@ -19,12 +32,9 @@
   </style>
 </head>
 <body>
-  <!-- WORKINGBASE -->
-  <canvas
-    id="rive-canvas"
-    width="190"
-    height="240">
-  </canvas>
+  <div id="rive-wrapper">
+    <canvas id="rive-canvas"></canvas>
+  </div>
 
   <script src="https://unpkg.com/@rive-app/canvas@2.24.0"></script>
   <script>
@@ -38,9 +48,26 @@
         autoplay: true,
         stateMachines: "State Machine 1",
         onLoad: () => {
-          r.resizeDrawingSurfaceToCanvas();
+          resizeToCanvas();
         },
       });
+
+      function resizeToCanvas() {
+        if (!canvas || !r) return;
+
+        // How big is the canvas element *visually* (inside the iframe)?
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+
+        // Set internal drawing buffer to match visible size
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+
+        r.resizeDrawingSurfaceToCanvas();
+      }
+
+      // Recalculate if iframe size changes
+      window.addEventListener("resize", resizeToCanvas);
     })();
   </script>
 </body>
