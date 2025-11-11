@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Rive Car</title>
+  <title>Rive Obama</title>
   <style>
     html,
     body {
@@ -40,6 +40,8 @@
   <script>
     (function () {
       const canvas = document.getElementById("rive-canvas");
+      const wrapper = document.getElementById("rive-wrapper");
+
       if (!canvas || !window.rive) return;
 
       const r = new rive.Rive({
@@ -55,19 +57,27 @@
       function resizeToCanvas() {
         if (!canvas || !r) return;
 
-        // How big is the canvas element *visually* (inside the iframe)?
         const rect = canvas.getBoundingClientRect();
         const dpr = window.devicePixelRatio || 1;
 
-        // Set internal drawing buffer to match visible size
         canvas.width = rect.width * dpr;
         canvas.height = rect.height * dpr;
 
         r.resizeDrawingSurfaceToCanvas();
       }
 
-      // Recalculate if iframe size changes
       window.addEventListener("resize", resizeToCanvas);
+
+      // Make any click inside the Rive area navigate parent page
+      if (wrapper) {
+        wrapper.addEventListener("click", function () {
+          try {
+            window.top.location.href = "https://varrgo.com/mcf";
+          } catch (e) {
+            window.location.href = "https://varrgo.com/mcf";
+          }
+        });
+      }
     })();
   </script>
 </body>
